@@ -1,0 +1,8 @@
+node_modules
+.wrangler
+_orig/
+_cap/
+assets/
+captions.json
+site/img/608e2190*
+
