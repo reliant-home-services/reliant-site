@@ -103,3 +103,10 @@ footer ul{list-style:none;padding:0;margin:0}footer li{margin-bottom:6px}
 .sticky-call{display:none}
 @media(max-width:700px){.sticky-call{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--ink);padding:10px;gap:10px;box-shadow:0 -4px 16px rgba(0,0,0,.35)}.sticky-call .btn{flex:1;text-align:center;padding:12px 8px}body{padding-bottom:70px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+/* phone number never breaks across lines */
+a[href^="tel:"]{white-space:nowrap}
+.top .wrap>.brand{min-width:0;flex:1 1 auto}
+.hdr-cta{flex:0 0 auto}
+.hdr-cta .btn{white-space:nowrap}
+@media(max-width:520px){.top .wrap{gap:8px}.brand{font-size:.92rem}.brand img{width:44px;height:34px}.hdr-cta{gap:6px}.hdr-cta .btn{padding:8px 12px;font-size:.85rem}.menu-btn{padding:6px 10px;font-size:.9rem}}
+@media(max-width:380px){.brand small{display:none}.hdr-cta .btn{padding:7px 10px;font-size:.8rem}}
