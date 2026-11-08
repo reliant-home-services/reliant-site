@@ -1,4 +1,4 @@
-// Reliant Home Services: quote form handler (Cloudflare Pages Function, free tier).
+// Reliant Consulting and Construction: quote form handler (Cloudflare Pages Function, free tier).
 // Settings live in Cloudflare Pages > Settings > Variables and Secrets (see HOW-TO-EDIT.md).
 //   RESEND_API_KEY (secret)  LEAD_TO_EMAIL  FROM_EMAIL (optional)  NTFY_TOPIC (optional, phone push)
 //   SMS_ENABLED ("true" to turn texting on) + TWILIO_SID, TWILIO_TOKEN, TWILIO_FROM, SMS_TO

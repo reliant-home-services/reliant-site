@@ -1,7 +1,7 @@
 """Site-wide settings. Edit here, then run:  python tools/build.py
 (This file is the one place for phone, domain, license, review link, etc.)"""
 DOMAIN = "https://reliantconsultingandconstruction.com"
-NAME = "Reliant Home Services"
+NAME = "Reliant Consulting and Construction"
 PHONE_DISPLAY = "(770) 508-0971"
 PHONE_TEL = "+17705080971"
 LICENSE = "25959"
