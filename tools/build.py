@@ -1,4 +1,4 @@
-import os, sys, json, shutil
+﻿import os, sys, json, shutil
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import *
 import towns
@@ -52,6 +52,7 @@ body = f'''
 {pic("68f3b5e74a04cbe2cc1b1048","Finished retaining wall and terraced lawn with backyard patio","card")}
 {pic("68fba25445057e121aa79020","Finished rustic living room with fireplace, leather seating and large windows","card")}
 </div><p class="center" style="margin-top:24px"><a class="btn dark" href="/projects/">See all projects</a></p></div></section>
+<section><div class="wrap" data-greviews data-max="3"></div></section>
 <section class="alt"><div class="wrap"><div class="center"><h2>How We Work</h2><p class="lead">Transform your space with expert craftsmanship</p></div>
 <div class="grid g4" style="margin-top:30px">{"".join(f'<div class="feat"><div class="num">{i+1}</div><h3>{t}</h3><p>{d}</p></div>' for i,(t,d) in enumerate(steps))}</div></div></section>
 <section><div class="wrap" style="max-width:860px"><h2 class="center">Frequently Asked Questions About Our Services in Jasper</h2>
@@ -172,7 +173,7 @@ gbtn = f'<p><a class="btn" href="{GOOGLE_REVIEWS_URL}" rel="noopener">Read our G
 promise = [("Transparent Estimates", "At Reliant Consulting and Construction, you will always know what to expect before work begins. We provide clear, detailed estimates with no hidden costs. Every step of your project is explained so you can make confident decisions and stay within your budget while receiving quality craftsmanship you can trust."),
            ("Respect for Every Space", "We believe in treating your property with the same care we would our own. From the first visit to the final cleanup, our team keeps your home or business protected, organized, and safe. As a fully licensed and insured company, your project is always in reliable hands."),
            ("The Reliant Promise", "We understand that construction and remodeling can feel stressful. That is why Mark and Dylan stand behind every project they complete. If something is not up to our standards, we make it right. You can count on our family to deliver results built on integrity, skill, and lasting trust.")]
-body = hero("Customer Reviews", "Built on trust and quality. Tell us about your next project and let our team help bring it to life.", '<div class="crumbs"><a href="/">Home</a> / Reviews</div>') + rev_block + f'''
+body = hero("Customer Reviews", "Built on trust and quality. Tell us about your next project and let our team help bring it to life.", '<div class="crumbs"><a href="/">Home</a> / Reviews</div>') + rev_block + '<section><div class="wrap"><h2 class="center">What Our Customers Say on Google</h2><div data-greviews data-max="12" style="margin-top:12px"></div></div></section>' + f'''
 <section class="alt"><div class="wrap"><div class="center"><h2>Why Choose Us?</h2>{gbtn}</div><div class="grid g3" style="margin-top:24px">{"".join(f"<div class=feat><h3>{t}</h3><p>{d}</p></div>" for t,d in promise)}</div></div></section>
 <section><div class="wrap"><div class="center"><h2>Our Projects</h2><p class="lead">Take a look at some of our recent projects and see the quality and care that go into every build and remodel.</p></div>
 <div class="grid g4" style="margin-top:24px">
