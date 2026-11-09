@@ -226,6 +226,7 @@ open(os.path.join(OUT, "_redirects"), "w").write("""/generalconstruction /servic
 /service-area-2 /service-areas/marietta/ 301
 /service-area-3 /service-areas/ball-ground/ 301
 /contact-us /contact/ 301
+/review https://search.google.com/local/writereview?placeid=ChIJZYWuWzb4VAURfyJE5Nv9vlc 302
 """)
 open(os.path.join(OUT, "_headers"), "w").write("""/*
   X-Content-Type-Options: nosniff
