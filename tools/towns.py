@@ -75,7 +75,7 @@ def build(page, hero, pic, cta_band, form, faq_html, faq_ld, SERVICES):
         for s, d in zip(SERVICES, [f"Complete construction services in {t}, GA", f"Transform your {t} home", "Emergency damage restoration"]))
     # hub
     cards = "".join(f'<a class="feat" style="text-decoration:none" href="/service-areas/{s}/"><h3>{n}, GA</h3><p>{INFO[s]["county"]}. Construction, remodeling and restoration.</p></a>' for s, n, _ in TOWNS)
-    body = hero("Service Areas", "Serving Jasper, Marietta, Ball Ground, Alpharetta and surrounding North Georgia communities.", '<div class="crumbs"><a href="/">Home</a> / Service Areas</div>') + f'''<section><div class="wrap"><div class="grid g4">{cards}</div>
+    body = hero("Service Areas", "Serving Jasper, Alpharetta, Marietta, Ball Ground and surrounding North Georgia communities.", '<div class="crumbs"><a href="/">Home</a> / Service Areas</div>') + f'''<section><div class="wrap"><div class="grid g4">{cards}</div>
 <p class="lead" style="margin-top:28px">We also serve Cumming, Canton, Woodstock, Roswell and nearby. Not sure we cover you? Call <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a>.</p></div></section>''' + cta_band()
     page("/service-areas/", "Service Areas in North Georgia | Reliant Consulting and Construction",
          "Reliant Consulting and Construction builds, remodels and restores homes in Jasper, Marietta, Ball Ground, Alpharetta and surrounding North Georgia.", body, cur="areas")

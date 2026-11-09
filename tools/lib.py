@@ -65,7 +65,7 @@ def footer():
     twn = "".join(f'<li><a href="/service-areas/{t[0]}/">{t[1]}, GA</a></li>' for t in TOWNS)
     return f'''<footer><div class="wrap">
 <div class="grid g4">
-<div><h3>{NAME}</h3><p>Family owned and operated construction company serving North Georgia with honesty, reliability, and quality craftsmanship.</p><p>License Number {LICENSE}<br><a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a></p></div>
+<div><h3>{NAME}</h3><p>Family owned and operated construction company serving North Georgia with honesty, reliability, and quality craftsmanship.</p><p>License Number {LICENSE}<br><a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a><br>{HOURS_TEXT}</p></div>
 <div><h3>Services</h3><ul>{svc}</ul></div>
 <div><h3>Service Areas</h3><ul>{twn}</ul></div>
 <div><h3>Quick Links</h3><ul><li><a href="/">Home</a></li><li><a href="/about/">About Us</a></li><li><a href="/services/">All Services</a></li><li><a href="/projects/">Projects</a></li><li><a href="/reviews/">Reviews</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/contact/">Contact Us</a></li></ul></div>
@@ -99,7 +99,7 @@ def jsonld(extra=None):
          "@id": DOMAIN + "/#business", "name": NAME, "url": DOMAIN + "/", "telephone": PHONE_TEL, "sameAs": [GOOGLE_REVIEWS_URL], "hasMap": GOOGLE_REVIEWS_URL,
          "image": DOMAIN + "/img/logo.webp", "logo": DOMAIN + "/img/logo.webp",
          "description": "Family owned and operated general contractor in Jasper, Georgia: construction, renovations and remodels, and restoration services across North Georgia.",
-         "priceRange": "$$", "identifier": "Georgia contractor license " + LICENSE,
+         "priceRange": "$$", "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"}], "identifier": "Georgia contractor license " + LICENSE,
          "address": {"@type": "PostalAddress", "addressLocality": "Jasper", "addressRegion": "GA", "addressCountry": "US"},
          "areaServed": [{"@type": "City", "name": t[1] + ", GA"} for t in TOWNS],
          "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Services", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": s[1]}} for s in SERVICES]}}

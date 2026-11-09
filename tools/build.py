@@ -40,7 +40,7 @@ body = f'''
 <section class="alt"><div class="wrap split"><div>
 <p class="eyebrow" style="color:#8a6a1f">Reliant Consulting and Construction</p><h2>A father-and-son team serving North Georgia</h2>
 <p>Reliant Consulting and Construction is a father-and-son team serving North Georgia with honest construction, expert renovations, and reliable restoration services. With over 30 years of combined experience, we treat every project as if it were our own home.</p>
-<div class="stats"><div><b>30+</b>years combined experience</div><div><b>25959</b>Georgia license no.</div></div>
+<div class="stats"><div><b>30+</b>years combined experience</div><div><b>{LICENSE}</b>Georgia license no.</div></div>
 <div class="cta-row"><a class="btn dark" href="/about/">About Us</a></div></div>
 {pic("68f2cef05675712fea75362a","Contractor using a laser level to check a room during construction")}</div></section>
 <section class="dark"><div class="wrap"><div class="center"><h2>Why Choose </h2><p class="lead" style="color:#b9b6ad">When you choose Reliant Consulting and Construction, you're choosing a partner who cares about doing things right</p></div>
@@ -59,7 +59,7 @@ body = f'''
 <p class="lead center">When it comes to your home or business, we know how important it is to feel confident in who you hire. That is why our team is always ready to answer your questions and explain every step of the process.</p>
 <div style="margin-top:26px">{faq_html(faqs)}</div></div></section>
 <section class="alt"><div class="wrap contact-grid"><div><h2>Ready to Get Started?</h2><p class="lead">Contact us today for a free estimate. Mark and Dylan will personally meet with you to discuss your project.</p>
-<ul class="ticks"><li>Free, detailed estimates</li><li>Licensed &amp; insured (License {LICENSE})</li><li>Serving Jasper, Marietta, Ball Ground, Alpharetta and nearby</li></ul>
+<ul class="ticks"><li>Free, detailed estimates</li><li>Licensed &amp; insured (License {LICENSE})</li><li>Serving Jasper, Alpharetta, Marietta, Ball Ground and nearby</li></ul>
 <p><a class="btn" href="tel:{PHONE_TEL}">Call {PHONE_DISPLAY}</a></p></div>{form("q-home")}</div></section>'''
 page("/", "Reliant Consulting and Construction | Jasper, GA Remodeling",
      "Family-owned Jasper, GA contractor: construction, kitchen and bathroom remodels, fire, water and storm restoration. Licensed & insured. Call (770) 508-0971.",
@@ -68,7 +68,7 @@ page("/", "Reliant Consulting and Construction | Jasper, GA Remodeling",
 # ---------- SERVICES ----------
 body = hero("Our Services", "Reliant Consulting and Construction is your single local team for construction, renovation and restoration across North Georgia.") + f'''
 <section><div class="wrap"><div class="grid g3">{cards}</div></div></section>
-<section class="alt"><div class="wrap center"><h2>Serving North Georgia</h2><p class="lead">Including Jasper, Marietta, Ball Ground, Alpharetta, Cumming, Canton, Woodstock, Roswell, and surrounding communities</p>
+<section class="alt"><div class="wrap center"><h2>Serving North Georgia</h2><p class="lead">Including Jasper, Alpharetta, Marietta, Ball Ground, Cumming, Canton, Woodstock, Roswell, and surrounding communities</p>
 <div class="cta-row" style="justify-content:center"><a class="btn dark" href="/service-areas/">See service areas</a></div></div></section>''' + cta_band()
 page("/services/", "Our Services | Reliant Consulting and Construction",
      "General construction, renovations and remodels, and restoration services from a family-owned Jasper, GA contractor. Licensed & insured. Free estimates.", body, cur="services")
@@ -194,9 +194,9 @@ body = hero("Contact Us", "Request a free estimate. Mark and Dylan will personal
 <section><div class="wrap contact-grid"><div><h2>Let's talk about your project</h2>
 <p class="lead">Call, or send the form and we will call you back.</p>
 <p style="font-size:1.4rem"><a href="tel:{PHONE_TEL}"><b>{PHONE_DISPLAY}</b></a></p>
-<ul class="ticks"><li>Free, detailed estimates</li><li>Licensed &amp; insured (License {LICENSE})</li><li>Serving Jasper, Marietta, Ball Ground, Alpharetta and surrounding North Georgia</li></ul></div>{form("q-contact")}</div></section>'''
+<ul class="ticks"><li>Free, detailed estimates</li><li>Licensed &amp; insured (License {LICENSE})</li><li>Serving Jasper, Alpharetta, Marietta, Ball Ground and surrounding North Georgia</li></ul></div>{form("q-contact")}</div></section>'''
 page("/contact/", "Contact Us | Reliant Consulting and Construction",
-     "Request a free estimate from Reliant Consulting and Construction. Call (770) 508-0971 or send a message. Serving Jasper, Marietta, Ball Ground, Alpharetta and North Georgia.", body, cur="contact")
+     "Request a free estimate from Reliant Consulting and Construction. Call (770) 508-0971 or send a message. Serving Jasper, Alpharetta, Marietta, Ball Ground and North Georgia.", body, cur="contact")
 
 # ---------- PRIVACY ----------
 body = hero("Privacy", "How we handle what you send us.") + f'''<section><div class="wrap" style="max-width:760px"><p>When you submit the quote form we receive your name, phone, email, address and project details. We use them only to contact you about your project. We do not sell or share them. This site uses no advertising trackers. To have your details removed, call <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a>.</p></div></section>'''
