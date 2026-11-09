@@ -1,4 +1,4 @@
-﻿import os, sys, json, shutil
+import os, sys, json, shutil
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import *
 import towns
@@ -231,7 +231,10 @@ open(os.path.join(OUT, "_headers"), "w").write("""/*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Cross-Origin-Opener-Policy: same-origin
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: https://*.googleusercontent.com; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'
 /img/*
   Cache-Control: public, max-age=31536000, immutable
 /css/*

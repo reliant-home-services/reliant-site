@@ -96,7 +96,7 @@ def cta_band(title="Ready to Get Started?", text="Contact us today for a free es
 
 def jsonld(extra=None):
     d = {"@context": "https://schema.org", "@type": ["GeneralContractor", "HomeAndConstructionBusiness"],
-         "@id": DOMAIN + "/#business", "name": NAME, "url": DOMAIN + "/", "telephone": PHONE_TEL,
+         "@id": DOMAIN + "/#business", "name": NAME, "url": DOMAIN + "/", "telephone": PHONE_TEL, "sameAs": [GOOGLE_REVIEWS_URL], "hasMap": GOOGLE_REVIEWS_URL,
          "image": DOMAIN + "/img/logo.webp", "logo": DOMAIN + "/img/logo.webp",
          "description": "Family owned and operated general contractor in Jasper, Georgia: construction, renovations and remodels, and restoration services across North Georgia.",
          "priceRange": "$$", "identifier": "Georgia contractor license " + LICENSE,
