@@ -111,3 +111,9 @@ a[href^="tel:"]{white-space:nowrap}
 @media(max-width:520px){.top .wrap{gap:8px}.brand{font-size:.92rem}.brand img{width:44px;height:34px}.hdr-cta{gap:6px}.hdr-cta .btn{padding:8px 12px;font-size:.85rem}.menu-btn{padding:6px 10px;font-size:.9rem}}
 @media(max-width:380px){.brand small{display:none}.hdr-cta .btn{padding:7px 10px;font-size:.8rem}}
 .gr-head{text-align:center;font-size:1.1rem}.gr-stars{color:#f5a623;letter-spacing:2px}.gr-card p:first-of-type+p{font-style:italic}.gr-card{display:flex;flex-direction:column;gap:8px}
+
+/* header v2 (Nov 9): roomier bar on wide screens, phone + buttons always on one line */
+.top .wrap{max-width:1340px}
+.hdr-cta a,.hdr-cta .btn{white-space:nowrap;flex-shrink:0}
+.brand span{text-wrap:balance}
+@media(min-width:1181px) and (max-width:1400px){nav ul{gap:0}nav a{padding:10px 9px;font-size:.92rem}.top .wrap{gap:10px}.hdr-cta .btn{padding:9px 14px;font-size:.88rem}}
