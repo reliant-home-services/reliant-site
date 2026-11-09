@@ -181,7 +181,7 @@ body = hero("Customer Reviews", "Built on trust and quality. Tell us about your 
 <a href="/projects/">{pic("68f3b5f3a144cd3bd2ea4933","Basement renovation",'card')}<h3 style="margin-top:8px">Finishing Basement</h3></a>
 <a href="/projects/">{pic("68f428101e167416f0edd38d","Driveway",'card')}<h3 style="margin-top:8px">Driveway</h3></a>
 <a href="/projects/">{pic("68f3b5f3faf82b7e98d370be","Bathroom remodel",'card')}<h3 style="margin-top:8px">Bathroom Remodels</h3></a></div></div></section>''' + cta_band("Built on Trust and Quality", "Tell us about your next project and let our team help bring it to life.")
-page("/reviews/", "Our Promise | Reliant Consulting and Construction",
+page("/reviews/", "Customer Reviews | Reliant Consulting and Construction",
      "Why North Georgia homeowners trust Reliant Consulting and Construction: transparent estimates, respect for your space, and a promise to make it right.", body, cur="reviews")
 
 # ---------- FAQ ----------
