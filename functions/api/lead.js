@@ -1,4 +1,4 @@
-// Reliant Consulting and Construction: quote form handler (Cloudflare Pages Function, free tier).
+﻿// Reliant Consulting and Construction: quote form handler (Cloudflare Pages Function, free tier).
 // Settings live in Cloudflare Pages > Settings > Variables and Secrets (see HOW-TO-EDIT.md).
 //   RESEND_API_KEY (secret)  LEAD_TO_EMAIL  FROM_EMAIL (optional)  NTFY_TOPIC (optional, phone push)
 //   SMS_ENABLED ("true" to turn texting on) + TWILIO_SID, TWILIO_TOKEN, TWILIO_FROM, SMS_TO
@@ -41,7 +41,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
     tasks.push(fetch("https://api.resend.com/emails", {
       method: "POST", headers: { Authorization: "Bearer " + env.RESEND_API_KEY, "Content-Type": "application/json" },
       body: JSON.stringify({
-        from: env.FROM_EMAIL || "Reliant Leads <onboarding@resend.dev>", to: [env.LEAD_TO_EMAIL], reply_to: email,
+        from: env.FROM_EMAIL || "Reliant Consulting and Construction Leads <onboarding@resend.dev>", to: [env.LEAD_TO_EMAIL], reply_to: email,
         subject: `New quote request: ${name} (${phone})`,
         text: `${summary}\n\n${lines.join("\n")}`,
         html: `<p><b>${esc(summary)}</b></p><p>Call: <a href="tel:${esc(phone)}">${esc(phone)}</a></p><pre style="font:inherit">${esc(lines.join("\n"))}</pre>`
@@ -75,3 +75,4 @@ export async function onRequestPost({ request, env, waitUntil }) {
 }
 
 export const onRequest = () => json({ ok: false, error: "Method not allowed" }, 405);
+

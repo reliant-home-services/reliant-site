@@ -1,4 +1,4 @@
-import os, sys, json, shutil
+﻿import os, sys, json, shutil
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import *
 import towns
@@ -43,7 +43,7 @@ body = f'''
 <div class="stats"><div><b>30+</b>years combined experience</div><div><b>25959</b>Georgia license no.</div></div>
 <div class="cta-row"><a class="btn dark" href="/about/">About Us</a></div></div>
 {pic("68f2cef05675712fea75362a","Contractor using a laser level to check a room during construction")}</div></section>
-<section class="dark"><div class="wrap"><div class="center"><h2>Why Choose Reliant?</h2><p class="lead" style="color:#b9b6ad">When you choose Reliant, you're choosing a partner who cares about doing things right</p></div>
+<section class="dark"><div class="wrap"><div class="center"><h2>Why Choose </h2><p class="lead" style="color:#b9b6ad">When you choose Reliant Consulting and Construction, you're choosing a partner who cares about doing things right</p></div>
 <div class="grid g4" style="margin-top:30px">{"".join(f'<div class="feat"><h3>{t}</h3><p>{d}</p></div>' for t,d in why)}</div></div></section>
 <section><div class="wrap"><div class="center"><h2>Recent Work</h2><p class="lead">A few finished projects from homes across North Georgia.</p></div>
 <div class="grid g4" style="margin-top:26px">
@@ -144,7 +144,7 @@ vals = [("Quality Work", "We never cut corners. Every project is built to the hi
 body = hero("About Reliant Consulting and Construction", "30+ years of combined experience. Father and son, Mark and Dylan.", '<div class="crumbs"><a href="/">Home</a> / About Us</div>') + f'''
 <section><div class="wrap split"><div><h2>Our Story</h2>
 <p>Reliant Consulting and Construction is a family-owned and operated company led by father and son, Mark and Dylan. With more than thirty years of combined experience, they bring true craftsmanship, care, and attention to detail to every project they touch. What began as Mark's vision has grown into a partnership built on doing things the right way the first time.</p>
-<p>They are not a large corporate contractor. They are a small, hands-on team that takes the time to understand your goals, answer your questions, and make sure everything is completed with excellence. When you hire Reliant, you get Mark and Dylan on your job site - not a rotation of subcontractors you have never met.</p>
+<p>They are not a large corporate contractor. They are a small, hands-on team that takes the time to understand your goals, answer your questions, and make sure everything is completed with excellence. When you hire Reliant Consulting and Construction, you get Mark and Dylan on your job site - not a rotation of subcontractors you have never met.</p>
 <p>From interior remodels and complete renovations to insurance restoration work, Reliant Consulting and Construction has helped families across North Georgia update, rebuild, and restore their homes. Their reputation is built on honesty, reliability, and lasting quality.</p>
 <p>For Mark and Dylan, building is more than work. It is their passion and their family name on every project. They don't just transform spaces - they build trust, one home at a time.</p></div>
 {pic("68f2cef05675712fea75362a","Contractor using a laser level to check a room during construction")}</div></section>
@@ -172,7 +172,7 @@ rev_block = f'<section><div class="wrap"><h2 class="center">What Our Customers S
 gbtn = f'<p><a class="btn" href="{GOOGLE_REVIEWS_URL}" rel="noopener">Read our Google reviews</a></p>' if GOOGLE_REVIEWS_URL else ""
 promise = [("Transparent Estimates", "At Reliant Consulting and Construction, you will always know what to expect before work begins. We provide clear, detailed estimates with no hidden costs. Every step of your project is explained so you can make confident decisions and stay within your budget while receiving quality craftsmanship you can trust."),
            ("Respect for Every Space", "We believe in treating your property with the same care we would our own. From the first visit to the final cleanup, our team keeps your home or business protected, organized, and safe. As a fully licensed and insured company, your project is always in reliable hands."),
-           ("The Reliant Promise", "We understand that construction and remodeling can feel stressful. That is why Mark and Dylan stand behind every project they complete. If something is not up to our standards, we make it right. You can count on our family to deliver results built on integrity, skill, and lasting trust.")]
+           ("The Reliant Consulting and Construction Promise", "We understand that construction and remodeling can feel stressful. That is why Mark and Dylan stand behind every project they complete. If something is not up to our standards, we make it right. You can count on our family to deliver results built on integrity, skill, and lasting trust.")]
 body = hero("Customer Reviews", "Built on trust and quality. Tell us about your next project and let our team help bring it to life.", '<div class="crumbs"><a href="/">Home</a> / Reviews</div>') + rev_block + '<section><div class="wrap"><h2 class="center">What Our Customers Say on Google</h2><div data-greviews data-max="12" style="margin-top:12px"></div></div></section>' + f'''
 <section class="alt"><div class="wrap"><div class="center"><h2>Why Choose Us?</h2>{gbtn}</div><div class="grid g3" style="margin-top:24px">{"".join(f"<div class=feat><h3>{t}</h3><p>{d}</p></div>" for t,d in promise)}</div></div></section>
 <section><div class="wrap"><div class="center"><h2>Our Projects</h2><p class="lead">Take a look at some of our recent projects and see the quality and care that go into every build and remodel.</p></div>
@@ -244,3 +244,4 @@ open(os.path.join(OUT, "_headers"), "w").write("""/*
   Cache-Control: public, max-age=86400
 """)
 print("built", len(PAGES), "pages")
+
