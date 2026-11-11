@@ -57,7 +57,16 @@ export async function onRequestPost({ request, env, waitUntil }) {
       method: "POST",
       headers: { Title: "New lead: " + name.replace(/[^\x20-\x7e]/g, ""), Priority: "high", Tags: "hammer_and_wrench", Click: "tel:" + phone.replace(/[^\d+]/g, "") },
       body: `${summary}\n${phone}`
-    }).then(r => r.ok));
+    }).then(async r => { if (!r.ok) console.log('ntfy', r.status, await r.text()); return r.ok; }).catch(e => { console.log('ntfy err', String(e)); return false; }));
+  }
+
+  // 2b. Discord channel alert (free; pushes to the phone's Discord app). Set DISCORD_WEBHOOK secret.
+  if (env.DISCORD_WEBHOOK) {
+    tasks.push(fetch(env.DISCORD_WEBHOOK, {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: "New Lead", allowed_mentions: { parse: [] },
+        content: ("**NEW LEAD: " + name + "**\n" + summary + "\nPhone: " + phone + "\nEmail: " + email + "\nAddress: " + (address || "(not given)") + "\nPage: " + page + "\n\n" + details).slice(0, 1900) })
+    }).then(async r => { if (!r.ok) console.log("discord", r.status, await r.text()); return r.ok; }).catch(() => false));
   }
 
   // 3. text alert to the owner (only when texting is set up)
