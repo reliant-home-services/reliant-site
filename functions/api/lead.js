@@ -1,11 +1,13 @@
-﻿// Reliant Consulting and Construction: quote form handler (Cloudflare Pages Function, free tier).
+// Reliant Consulting and Construction: quote form handler (Cloudflare Pages Function, free tier).
 // Settings live in Cloudflare Pages > Settings > Variables and Secrets (see HOW-TO-EDIT.md).
 //   RESEND_API_KEY (secret)  LEAD_TO_EMAIL  FROM_EMAIL (optional)  NTFY_TOPIC (optional, phone push)
-//   SMS_ENABLED ("true" to turn texting on) + TWILIO_SID, TWILIO_TOKEN, TWILIO_FROM, SMS_TO
+//   AUTOREPLY_FROM (e.g. "Reliant Consulting and Construction <hello@reliantconsultingandconstruction.com>") = thank-you email to the customer
+//   Texting: see lib/twilio.js (SMS_ENABLED, TWILIO_*, OWNER_CELL). The customer is texted only if they ticked the box.
 // Optional AI summary: add a "Workers AI" binding named AI. Without it a plain summary is used.
 
 const clean = (s, n) => String(s ?? "").replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g, "").trim().slice(0, n);
 const json = (o, status = 200) => new Response(JSON.stringify(o), { status, headers: { "Content-Type": "application/json", "Cache-Control": "no-store" } });
+import { sms, owner, e164, BIZ } from "../../lib/twilio.js";
 const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 export async function onRequestPost({ request, env, waitUntil }) {
@@ -58,17 +60,28 @@ export async function onRequestPost({ request, env, waitUntil }) {
     }).then(r => r.ok));
   }
 
-  // 3. optional text message (OFF until SMS_ENABLED = "true")
-  if (env.SMS_ENABLED === "true" && env.TWILIO_SID && env.TWILIO_TOKEN && env.TWILIO_FROM && env.SMS_TO) {
-    tasks.push(fetch(`https://api.twilio.com/2010-04-01/Accounts/${env.TWILIO_SID}/Messages.json`, {
-      method: "POST",
-      headers: { Authorization: "Basic " + btoa(env.TWILIO_SID + ":" + env.TWILIO_TOKEN), "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({ From: env.TWILIO_FROM, To: env.SMS_TO, Body: `New lead: ${summary} Call ${phone}`.slice(0, 320) })
-    }).then(r => r.ok));
+  // 3. text alert to the owner (only when texting is set up)
+  tasks.push(sms(env, owner(env), `New lead: ${summary} Call ${phone}`));
+
+  // 4. thank-you to the customer (does not count as delivery)
+  const extras = [], first = name.split(/\s+/)[0];
+  if (env.AUTOREPLY_FROM && env.RESEND_API_KEY) {
+    extras.push(fetch("https://api.resend.com/emails", {
+      method: "POST", headers: { Authorization: "Bearer " + env.RESEND_API_KEY, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from: env.AUTOREPLY_FROM, to: [email], reply_to: env.LEAD_TO_EMAIL,
+        subject: "We got your request - " + BIZ,
+        text: `Hi ${first},\n\nThanks for reaching out to ${BIZ}. We received your request and Mark or Dylan will contact you within one business day (Mon-Fri, 8 AM - 6 PM) to set up your free estimate.\n\nNeed us sooner? Call (770) 508-0971.\n\nWhat you sent us:\n${details}\n\n${BIZ}\nLicense RLCO004774`
+      })
+    }).then(async r => { if (!r.ok) console.log("autoreply", r.status, await r.text()); return r.ok; }));
+  }
+  if (d.sms_ok === "yes" && e164(phone)) {
+    extras.push(sms(env, e164(phone), `Hi ${first}, this is ${BIZ}. We got your quote request and will call you within one business day. Questions? Reply here. Msg & data rates may apply. Reply STOP to opt out.`));
   }
 
   if (!tasks.length) { console.log("lead received but no delivery channel configured"); return json({ ok: false, error: "Sorry, that did not send. Please call (770) 508-0971." }, 503); }
   const results = await Promise.allSettled(tasks);
+  await Promise.allSettled(extras);
   const delivered = results.some(x => x.status === "fulfilled" && x.value);
   if (!delivered) return json({ ok: false, error: "Sorry, that did not send. Please call (770) 508-0971." }, 502);
   return json({ ok: true });

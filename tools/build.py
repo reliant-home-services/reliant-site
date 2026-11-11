@@ -199,7 +199,7 @@ page("/contact/", "Contact Us | Reliant Consulting and Construction",
      "Request a free estimate from Reliant Consulting and Construction. Call (770) 508-0971 or send a message. Serving Jasper, Alpharetta, Marietta, Ball Ground and North Georgia.", body, cur="contact")
 
 # ---------- PRIVACY ----------
-body = hero("Privacy", "How we handle what you send us.") + f'''<section><div class="wrap" style="max-width:760px"><p>When you submit the quote form we receive your name, phone, email, address and project details. We use them only to contact you about your project. We do not sell or share them. This site uses no advertising trackers. To have your details removed, call <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a>.</p></div></section>'''
+body = hero("Privacy", "How we handle what you send us.") + f'''<section><div class="wrap" style="max-width:760px"><p>When you submit the quote form we receive your name, phone, email, address and project details. We use them only to contact you about your project. We do not sell or share them. This site uses no advertising trackers. If you tick the box to receive texts, we text you only about your request (Msg &amp; data rates may apply; frequency varies). Reply STOP to opt out or HELP for help. Mobile numbers and text opt-in consent are never shared with or sold to third parties or affiliates for marketing purposes. To have your details removed, call <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a>.</p></div></section>'''
 page("/privacy/", "Privacy | Reliant Consulting and Construction", "How Reliant Consulting and Construction handles information you send through the quote form.", body)
 
 # ---------- TOWNS ----------

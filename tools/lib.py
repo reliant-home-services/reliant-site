@@ -1,4 +1,4 @@
-import os, json, html, re
+﻿import os, json, html, re
 from PIL import Image
 from config import *
 
@@ -84,6 +84,7 @@ def form(idp="q", title="Request A Quote"):
 <label>Email *<input name="email" type="email" required autocomplete="email" maxlength="160"></label>
 <label>Street Address / Town<input name="address" autocomplete="street-address" maxlength="200"></label>
 <label>Project Details *<textarea name="details" rows="4" required maxlength="2000" placeholder="Tell us what you have in mind"></textarea></label>
+<label class="chk"><input type="checkbox" name="sms_ok" value="yes"> Text me about my request (optional). Msg &amp; data rates may apply. Msg frequency varies. Reply STOP to opt out, HELP for help.</label>
 <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
 <button class="btn" type="submit">Send Message</button>
 <div class="msg" role="status" aria-live="polite"></div>
@@ -117,7 +118,7 @@ def page(path, title, desc, body, cur="", og_img="68f3b5f3a144cd15d4ea493b", ext
 <link rel="canonical" href="{canon}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="{NAME}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{canon}"><meta property="og:image" content="{DOMAIN}/img/{og_img}.webp">
 <meta name="theme-color" content="#111214"><link rel="icon" href="/img/logo-mark.webp" type="image/webp">
-{pl}<link rel="stylesheet" href="/css/style.css">{jsonld(extra_ld)}</head><body>
+{pl}<link rel="stylesheet" href="/css/style.css?v=20261111">{jsonld(extra_ld)}</head><body>
 {header(cur)}<main id="main">{body}</main>{footer()}</body></html>'''
     fp = os.path.join(OUT, path.strip("/"), "index.html") if path != "/" else os.path.join(OUT, "index.html")
     os.makedirs(os.path.dirname(fp), exist_ok=True)

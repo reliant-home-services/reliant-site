@@ -13,6 +13,10 @@ REVIEWS = []
 TOWNS = [
     ("jasper", "Jasper", "Pickens County"),
     ("alpharetta", "Alpharetta", "Fulton County"),
-    ("marietta", "Marietta", "Cobb County"),
+    ("canton", "Canton", "Cherokee County"),
+    ("woodstock", "Woodstock", "Cherokee County"),
+    ("cumming", "Cumming", "Forsyth County"),
+    ("milton", "Milton", "Fulton County"),
     ("ball-ground", "Ball Ground", "Cherokee County"),
+    ("marietta", "Marietta", "Cobb County"),
 ]

@@ -1,4 +1,4 @@
-from config import *
+﻿from config import *
 
 INFO = {
  "jasper": dict(county="Pickens County", short="Jasper and Pickens County",
@@ -68,6 +68,70 @@ INFO = {
    h2="Professional Construction & Renovation Services in Alpharetta, Georgia",
    title="Alpharetta Contractor | Reliant Consulting and Construction",
    desc="Alpharetta, GA contractor serving Fulton County: kitchen and bathroom remodels, basements, additions and restoration. Family owned, licensed & insured. Free estimates."),
+ "canton": dict(county="Cherokee County", short="Canton and Cherokee County",
+   tag="Construction and remodeling in Canton",
+   sub="Remodels, additions and restoration for Canton homeowners",
+   hero="68fba254409d6af8e1fc3152",
+   intro=["Canton is the county seat of Cherokee County and one of the places we work most. Mark and Dylan handle kitchens, bathrooms, basements, decks and additions for Canton homeowners, from older homes near downtown to newer subdivisions off I-575.",
+          "You deal directly with the owners from the first walk-through to the final clean-up. No sales team, no hand-offs.",
+          "Construction, renovations and restoration in Canton, GA."],
+   story="", love="",
+   long=["Looking for a contractor in Canton, Georgia? Reliant Consulting and Construction is a family-owned company serving Canton and the rest of Cherokee County with construction, renovation and restoration work.",
+         "Most Canton jobs we see are kitchen and bathroom remodels, basement finishing, decks and home additions. We also handle framing, structural repairs and full renovations.",
+         "If your home is damaged by water, fire or a storm, we repair it and work directly with your insurance company so the claim moves faster.",
+         "Every estimate is free and in person. Call or send the form and Mark or Dylan will get back to you."],
+   popular=["Kitchen Renovations", "Bathroom Remodels", "Basement Finishing", "Deck Construction", "Home Additions", "Whole Home Renovations", "Roof Repair & Replacement", "Storm Damage Restoration", "Emergency Water Damage"],
+   h2="Construction & Renovation Services in Canton, Georgia",
+   title="Canton GA Contractor | Reliant Consulting and Construction",
+   desc="Canton, GA contractor serving Cherokee County: kitchen and bathroom remodels, basements, decks, additions and restoration. Family owned, licensed & insured."),
+ "woodstock": dict(county="Cherokee County", short="Woodstock and south Cherokee County",
+   tag="Construction and remodeling in Woodstock",
+   sub="Kitchens, bathrooms, basements and outdoor living for Woodstock homes",
+   hero="68f3b5e74a04cbe2cc1b1048",
+   intro=["Woodstock homeowners call us for remodels that add value: updated kitchens and bathrooms, finished basements, decks, patios and retaining walls. We work across Woodstock, including the Towne Lake area.",
+          "Mark and Dylan run every job themselves, so the people who quote your project are the people who build it.",
+          "Construction, renovations and restoration in Woodstock, GA."],
+   story="", love="",
+   long=["Need a reliable contractor in Woodstock, Georgia? Reliant Consulting and Construction serves Woodstock and south Cherokee County with remodeling, construction and restoration.",
+         "Popular Woodstock projects include kitchen and bathroom remodels, basement finishing, decks, patios and retaining walls, and home additions.",
+         "When water, fire or storm damage hits, we make repairs and work with your insurance company from start to finish.",
+         "Free in-person estimates, clear pricing and a schedule you can plan around. Contact us to get started."],
+   popular=["Kitchen Renovations", "Bathroom Remodels", "Basement Finishing", "Deck Construction", "Patios & Retaining Walls", "Home Additions", "Whole Home Renovations", "Storm Damage Restoration", "Emergency Water Damage"],
+   h2="Remodeling & Construction Services in Woodstock, Georgia",
+   title="Woodstock GA Contractor | Reliant Consulting and Construction",
+   desc="Woodstock, GA contractor: kitchen and bathroom remodels, basements, decks, patios, additions and restoration. Family owned, licensed & insured. Free estimates."),
+ "cumming": dict(county="Forsyth County", short="Cumming and Forsyth County",
+   tag="Construction and remodeling in Cumming",
+   sub="Remodels, outdoor living and restoration for Cumming and Forsyth County",
+   hero="68fcf6eed672b4c0f9c32cf4",
+   intro=["Cumming is the county seat of Forsyth County, and we work there regularly. From lake-area homes near Lake Lanier to newer neighborhoods, Mark and Dylan handle remodels, additions, decks, porches and pavilions.",
+          "One team, owner-run, from estimate to final walk-through.",
+          "Construction, renovations and restoration in Cumming, GA."],
+   story="", love="",
+   long=["Searching for a contractor in Cumming, Georgia? Reliant Consulting and Construction serves Cumming and Forsyth County with construction, renovation and restoration services.",
+         "We build decks, porches, pavilions and additions, and we remodel kitchens, bathrooms and basements. Larger whole-home renovations are welcome too.",
+         "For water, fire and storm damage we repair the home and work directly with your insurance company.",
+         "Free in-person estimates. Call or send the form to set one up."],
+   popular=["Kitchen Renovations", "Bathroom Remodels", "Basement Finishing", "Decks, Porches & Pavilions", "Home Additions", "Whole Home Renovations", "Roof Repair & Replacement", "Storm Damage Restoration", "Emergency Water Damage"],
+   h2="Construction & Renovation Services in Cumming, Georgia",
+   title="Cumming GA Contractor | Reliant Consulting and Construction",
+   desc="Cumming, GA contractor serving Forsyth County: remodels, decks, porches, pavilions, additions and restoration. Family owned, licensed & insured. Free estimates."),
+ "milton": dict(county="Fulton County", short="Milton and north Fulton County",
+   tag="Construction and remodeling in Milton",
+   sub="High-end remodels, additions and restoration for Milton homeowners",
+   hero="68fba25445057e121aa79020",
+   intro=["Milton homes tend to be larger properties with high expectations for finish quality. We remodel kitchens, bathrooms and living spaces, finish basements and build additions across Milton, including the Crabapple area.",
+          "Mark and Dylan manage every Milton project personally, with clear schedules and straight answers.",
+          "Construction, renovations and restoration in Milton, GA."],
+   story="", love="",
+   long=["Looking for a contractor in Milton, Georgia? Reliant Consulting and Construction serves Milton and north Fulton County with remodeling, construction and restoration.",
+         "We handle kitchen and bathroom remodels, basement finishing, living-space renovations, home additions and outdoor projects.",
+         "If your home is damaged by water, fire or a storm, we restore it and work directly with your insurance company.",
+         "Free in-person estimates. Contact us to talk through your project."],
+   popular=["Kitchen Renovations", "Bathroom Remodels", "Basement Finishing", "Living Space Renovations", "Home Additions", "Whole Home Renovations", "Deck Construction", "Storm Damage Restoration", "Emergency Water Damage"],
+   h2="Remodeling & Construction Services in Milton, Georgia",
+   title="Milton GA Contractor | Reliant Consulting and Construction",
+   desc="Milton, GA contractor serving north Fulton County: kitchen and bathroom remodels, basements, additions and restoration. Family owned, licensed & insured."),
 }
 
 def build(page, hero, pic, cta_band, form, faq_html, faq_ld, SERVICES):
@@ -75,10 +139,10 @@ def build(page, hero, pic, cta_band, form, faq_html, faq_ld, SERVICES):
         for s, d in zip(SERVICES, [f"Complete construction services in {t}, GA", f"Transform your {t} home", "Emergency damage restoration"]))
     # hub
     cards = "".join(f'<a class="feat" style="text-decoration:none" href="/service-areas/{s}/"><h3>{n}, GA</h3><p>{INFO[s]["county"]}. Construction, remodeling and restoration.</p></a>' for s, n, _ in TOWNS)
-    body = hero("Service Areas", "Serving Jasper, Alpharetta, Marietta, Ball Ground and surrounding North Georgia communities.", '<div class="crumbs"><a href="/">Home</a> / Service Areas</div>') + f'''<section><div class="wrap"><div class="grid g4">{cards}</div>
-<p class="lead" style="margin-top:28px">We also serve Cumming, Canton, Woodstock, Roswell and nearby. Not sure we cover you? Call <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a>.</p></div></section>''' + cta_band()
+    body = hero("Service Areas", "Serving Jasper, Alpharetta, Canton, Woodstock, Cumming, Milton, Ball Ground, Marietta and surrounding North Georgia communities.", '<div class="crumbs"><a href="/">Home</a> / Service Areas</div>') + f'''<section><div class="wrap"><div class="grid g4">{cards}</div>
+<p class="lead" style="margin-top:28px">We also serve Roswell and other nearby towns. Not sure we cover you? Call <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a>.</p></div></section>''' + cta_band()
     page("/service-areas/", "Service Areas in North Georgia | Reliant Consulting and Construction",
-         "Reliant Consulting and Construction builds, remodels and restores homes in Jasper, Marietta, Ball Ground, Alpharetta and surrounding North Georgia.", body, cur="areas")
+         "Reliant Consulting and Construction builds, remodels and restores homes across North Georgia: Jasper, Alpharetta, Canton, Woodstock, Cumming, Milton and more.", body, cur="areas")
     for slug, town, county in TOWNS:
         d = INFO[slug]
         crumbs = f'<div class="crumbs"><a href="/">Home</a> / <a href="/service-areas/">Service Areas</a> / {town}</div>'
