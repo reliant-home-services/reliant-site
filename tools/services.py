@@ -2,6 +2,7 @@
 Each entry in PAGES_DATA builds /services/<slug>/. Edit the text here, then run: python tools/build.py
 Rule: nothing invented. No prices, no certifications, no promises the owners have not made elsewhere on the site."""
 from config import *
+import guides
 
 # parent = which of the 3 main service pages links to it
 PAGES_DATA = [
@@ -201,5 +202,5 @@ def build(page, hero, pic, cta_band, faq_html, faq_ld):
 <section class="dark"><div class="wrap"><div class="center"><h2>How We Work</h2></div><div class="grid g4" style="margin-top:28px">{"".join(f'<div class="feat"><div class="num">{i+1}</div><h3>{t}</h3><p>{x}</p></div>' for i, (t, x) in enumerate(STEPS))}</div></div></section>
 <section class="alt"><div class="wrap"><h2>{d["name"]} Photos</h2><div class="gallery" style="margin-top:20px">{gal}</div><p style="margin-top:14px"><a href="/projects/">View more projects &rarr;</a></p></div></section>
 <section><div class="wrap" style="max-width:860px"><h2>{d["name"]} FAQs</h2>{faq_html(d["faqs"])}</div></section>
-<section class="alt"><div class="wrap" style="max-width:860px"><h2>Where we work</h2><p>Reliant Consulting and Construction is based in Jasper, Georgia and provides {d["name"].lower()} in {towns} and surrounding North Georgia communities. We also offer {related}, and you can see everything we do on our <a href="/services/{d["parent"]}/">{PARENTS[d["parent"]].lower()}</a> page.</p></div></section>''' + cta_band()
+<section class="alt"><div class="wrap" style="max-width:860px"><h2>Where we work</h2><p>Reliant Consulting and Construction is based in Jasper, Georgia and provides {d["name"].lower()} in {towns} and surrounding North Georgia communities. We also offer {related}, and you can see everything we do on our <a href="/services/{d["parent"]}/">{PARENTS[d["parent"]].lower()}</a> page.{guides.guide_link(d["slug"])}</p></div></section>''' + cta_band()
         page(f'/services/{d["slug"]}/', d["title"], d["desc"], body, cur=d["parent"], og_img=d["hero"], extra_ld=[faq_ld(d["faqs"])], crumb=d["name"], svc=d["svc"])

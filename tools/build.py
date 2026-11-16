@@ -3,6 +3,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import *
 import towns
 import services
+import guides
 
 HERO = "68f3b5f3a144cd15d4ea493b"
 
@@ -20,6 +21,10 @@ faqs = [("What types of projects does Reliant Consulting and Construction handle
         ("How long does a remodel or renovation take?", "Project timelines vary based on size and scope, but many bathroom remodels are completed in about four weeks. Larger renovations and new builds may take longer. Mark and Dylan provide a clear schedule before work begins so you always know what to expect."),
         ("Do you offer free estimates?", "Yes. Reliant Consulting and Construction provides free, detailed estimates for all remodeling and construction projects. We take the time to understand your goals, explain your options, and outline costs upfront so there are no surprises later."),
         ("What areas do you serve?", "Reliant Consulting and Construction proudly serves Jasper, Ball Ground, Canton, Woodstock, Cumming, Milton, Alpharetta, Marietta, and surrounding North Georgia communities. If you are unsure whether your area is covered, contact our team and we will be happy to help.")]
+
+home_reviews = ('<section><div class="wrap"><h2 class="center">What Our Customers Say</h2><div class="grid g3" style="margin-top:24px">'
+    + "".join(f'<div class="feat"><p>&ldquo;{r["text"]}&rdquo;</p><p><b>{r["name"]}</b>{", " + r["town"] if r.get("town") else ""} &middot; Google review</p></div>' for r in REVIEWS[:3])
+    + '</div><div data-greviews data-max="0" style="margin-top:22px"></div></div></section>') if REVIEWS else '<section><div class="wrap" data-greviews data-max="3"></div></section>'
 
 def faq_html(items):
     return "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in items)
@@ -54,12 +59,12 @@ body = f'''
 {pic("68f3b5e74a04cbe2cc1b1048","Finished retaining wall and terraced lawn with backyard patio","card")}
 {pic("68fba25445057e121aa79020","Finished rustic living room with fireplace, leather seating and large windows","card")}
 </div><p class="center" style="margin-top:24px"><a class="btn dark" href="/projects/">See all projects</a></p></div></section>
-<section><div class="wrap" data-greviews data-max="3"></div></section>
+{home_reviews}
 <section class="alt"><div class="wrap"><div class="center"><h2>How We Work</h2><p class="lead">Transform your space with expert craftsmanship</p></div>
 <div class="grid g4" style="margin-top:30px">{"".join(f'<div class="feat"><div class="num">{i+1}</div><h3>{t}</h3><p>{d}</p></div>' for i,(t,d) in enumerate(steps))}</div></div></section>
 <section><div class="wrap" style="max-width:860px"><h2 class="center">Frequently Asked Questions About Our Services in Jasper</h2>
 <p class="lead center">When it comes to your home or business, we know how important it is to feel confident in who you hire. That is why our team is always ready to answer your questions and explain every step of the process.</p>
-<div style="margin-top:26px">{faq_html(faqs)}</div></div></section>
+<div style="margin-top:26px">{faq_html(faqs)}</div><p class="center" style="margin-top:22px"><a href="/guides/">Read our homeowner guides &rarr;</a></p></div></section>
 <section class="alt"><div class="wrap contact-grid"><div><h2>Ready to Get Started?</h2><p class="lead">Contact us today for a free estimate. Mark and Dylan will personally meet with you to discuss your project.</p>
 <ul class="ticks"><li>Free, detailed estimates</li><li>Licensed &amp; insured (License {LICENSE})</li><li>Serving Jasper, Alpharetta, Marietta, Ball Ground and nearby</li></ul>
 <p><a class="btn" href="tel:{PHONE_TEL}">Call {PHONE_DISPLAY}</a></p></div>{form("q-home")}</div></section>'''
@@ -173,13 +178,13 @@ page("/projects/", "Projects & Photo Gallery | Reliant Consulting and Constructi
      "See finished kitchen and bathroom remodels, concrete and driveways, and renovation projects by Reliant Consulting and Construction across North Georgia.", body, cur="projects", og_img="68f43c75722f75066b51c1f8", crumb="Projects")
 
 # ---------- REVIEWS ----------
-rev_cards = "".join(f'<div class="feat"><p>&ldquo;{r["text"]}&rdquo;</p><p><b>{r["name"]}</b>{", " + r["town"] if r.get("town") else ""}</p></div>' for r in REVIEWS)
+rev_cards = "".join(f'<div class="feat"><p>&ldquo;{r["text"]}&rdquo;</p><p><b>{r["name"]}</b>{", " + r["town"] if r.get("town") else ""} &middot; Google review</p></div>' for r in REVIEWS)
 rev_block = f'<section><div class="wrap"><h2 class="center">What Our Customers Say</h2><div class="grid g3" style="margin-top:24px">{rev_cards}</div></div></section>' if REVIEWS else ""
 gbtn = f'<p><a class="btn" href="{GOOGLE_REVIEWS_URL}" rel="noopener">Read our Google reviews</a></p>' if GOOGLE_REVIEWS_URL else ""
 promise = [("Transparent Estimates", "At Reliant Consulting and Construction, you will always know what to expect before work begins. We provide clear, detailed estimates with no hidden costs. Every step of your project is explained so you can make confident decisions and stay within your budget while receiving quality craftsmanship you can trust."),
            ("Respect for Every Space", "We believe in treating your property with the same care we would our own. From the first visit to the final cleanup, our team keeps your home or business protected, organized, and safe. As a fully licensed and insured company, your project is always in reliable hands."),
            ("The Reliant Consulting and Construction Promise", "We understand that construction and remodeling can feel stressful. That is why Mark and Dylan stand behind every project they complete. If something is not up to our standards, we make it right. You can count on our family to deliver results built on integrity, skill, and lasting trust.")]
-body = hero("Customer Reviews of Reliant Consulting and Construction", "Built on trust and quality. Tell us about your next project and let our team help bring it to life.", '<div class="crumbs"><a href="/">Home</a> / Reviews</div>') + rev_block + '<section><div class="wrap"><h2 class="center">What Our Customers Say on Google</h2><div data-greviews data-max="12" style="margin-top:12px"></div></div></section>' + f'''
+body = hero("Customer Reviews of Reliant Consulting and Construction", "Built on trust and quality. Tell us about your next project and let our team help bring it to life.", '<div class="crumbs"><a href="/">Home</a> / Reviews</div>') + rev_block + '<section><div class="wrap"><h2 class="center">Our Google Rating</h2><div data-greviews data-max="' + ("0" if REVIEWS else "12") + '" style="margin-top:12px"></div></div></section>' + f'''
 <section class="alt"><div class="wrap"><div class="center"><h2>Why Choose Us?</h2>{gbtn}</div><div class="grid g3" style="margin-top:24px">{"".join(f"<div class=feat><h3>{t}</h3><p>{d}</p></div>" for t,d in promise)}</div></div></section>
 <section><div class="wrap"><div class="center"><h2>Our Projects</h2><p class="lead">Take a look at some of our recent projects and see the quality and care that go into every build and remodel.</p></div>
 <div class="grid g4" style="margin-top:24px">
@@ -207,6 +212,9 @@ page("/contact/", "Contact Us | Reliant Consulting and Construction",
 # ---------- PRIVACY ----------
 body = hero("Privacy", "How we handle what you send us.") + f'''<section><div class="wrap" style="max-width:760px"><p>When you submit the quote form we receive your name, phone, email, address and project details. We use them only to contact you about your project. We do not sell or share them. This site uses no advertising trackers. If you tick the box to receive texts, we text you only about your request (Msg &amp; data rates may apply; frequency varies). Reply STOP to opt out or HELP for help. Mobile numbers and text opt-in consent are never shared with or sold to third parties or affiliates for marketing purposes. To have your details removed, call <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a>.</p></div></section>'''
 page("/privacy/", "Privacy | Reliant Consulting and Construction", "How Reliant Consulting and Construction handles information you send through the quote form.", body)
+
+# ---------- GUIDES (tools/guides.py) ----------
+guides.build(page, hero, pic, cta_band)
 
 # ---------- TOWNS ----------
 towns.build(page, hero, pic, cta_band, form, faq_html, faq_ld, SERVICES)

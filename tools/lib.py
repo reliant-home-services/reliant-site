@@ -68,7 +68,7 @@ def footer():
 <div><h3>{NAME}</h3><p>Family owned and operated construction company serving North Georgia with honesty, reliability, and quality craftsmanship.</p><p>Based in Jasper, Pickens County, Georgia<br>License Number {LICENSE}<br><a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a><br>{HOURS_TEXT}</p></div>
 <div><h3>Services</h3><ul>{svc}</ul></div>
 <div><h3>Service Areas</h3><ul>{twn}</ul></div>
-<div><h3>Quick Links</h3><ul><li><a href="/">Home</a></li><li><a href="/about/">About Us</a></li><li><a href="/services/">All Services</a></li><li><a href="/projects/">Projects</a></li><li><a href="/reviews/">Reviews</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/contact/">Contact Us</a></li></ul></div>
+<div><h3>Quick Links</h3><ul><li><a href="/">Home</a></li><li><a href="/about/">About Us</a></li><li><a href="/services/">All Services</a></li><li><a href="/projects/">Projects</a></li><li><a href="/reviews/">Reviews</a></li><li><a href="/guides/">Guides</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/contact/">Contact Us</a></li></ul></div>
 </div>
 <div class="legal"><span>&copy; 2026 {NAME}. Licensed &amp; insured. License {LICENSE}.</span><span><a href="/privacy/">Privacy</a></span></div>
 </div></footer>
@@ -111,7 +111,7 @@ def jsonld(extra=None):
 PAGES = []
 def crumb_ld(path, crumb):
     """BreadcrumbList for Google: Home > section > page."""
-    HUBS = {"services": "Services", "service-areas": "Service Areas"}
+    HUBS = {"services": "Services", "service-areas": "Service Areas", "guides": "Guides"}
     parts = [p for p in path.strip("/").split("/") if p]
     items = [("Home", DOMAIN + "/")]
     if len(parts) == 2 and parts[0] in HUBS: items.append((HUBS[parts[0]], f"{DOMAIN}/{parts[0]}/"))
