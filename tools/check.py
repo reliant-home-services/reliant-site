@@ -10,12 +10,12 @@ def exists(url):
         f = os.path.join(OUT, p.lstrip("/"))
         return os.path.isfile(f) or os.path.isfile(os.path.join(f, "index.html"))
     return True
-pages = glob.glob(OUT + "/**/*.html", recursive=True)
+pages = [p for p in glob.glob(OUT + "/**/*.html", recursive=True) if not os.path.basename(p).startswith("google")]  # skip Google verification file
 for f in pages:
     rel = os.path.relpath(f, OUT); t = open(f, encoding="utf8").read()
     ti = re.search(r"<title>(.*?)</title>", t, re.S); de = re.search(r'<meta name="description" content="(.*?)"', t)
-    if not ti or not (20 <= len(ti.group(1)) <= 70): problems.append(f"{rel}: title length {len(ti.group(1)) if ti else 0} (aim 20-70)")
-    if not de or not (70 <= len(de.group(1)) <= 175): problems.append(f"{rel}: description length {len(de.group(1)) if de else 0} (aim 70-175)")
+    if not ti or not (20 <= len(ti.group(1)) <= 75): problems.append(f"{rel}: title length {len(ti.group(1)) if ti else 0} (aim 20-75)")
+    if not de or not (70 <= len(de.group(1)) <= 165): problems.append(f"{rel}: description length {len(de.group(1)) if de else 0} (aim 70-165)")
     if ti: titles.setdefault(ti.group(1), []).append(rel)
     if de: descs.setdefault(de.group(1), []).append(rel)
     if t.count("<h1") != 1: problems.append(f"{rel}: {t.count('<h1')} h1 tags (want 1)")

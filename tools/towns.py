@@ -1,8 +1,9 @@
 ﻿from config import *
+import services
 
 INFO = {
  "jasper": dict(county="Pickens County", short="Jasper and Pickens County",
-   tag="Construction and remodeling in Jasper",
+   tag="Construction and Remodeling in Jasper, GA",
    sub="Quality construction and renovation solutions for Jasper homeowners and businesses",
    hero="68f428108e5daafa4596a6d9",
    intro=["As a family-owned business serving Jasper and Pickens County, we understand the unique needs of local homeowners. From historic home renovations to new construction, we bring the right expertise to every project.",
@@ -16,10 +17,10 @@ INFO = {
          "Every project we undertake in Jasper is backed by our commitment to quality workmanship, honest communication, and fair pricing. We're licensed, insured, and treat every home as if it were our own. Contact us today for a free estimate on your Jasper construction or renovation project."],
    popular=["Kitchen Renovations", "Deck Construction", "Basement Finishing", "Bathroom Remodels", "Home Additions", "Whole Home Renovations", "Roof Repair & Replacement", "Storm Damage Restoration", "Emergency Water Damage"],
    h2="Professional Construction & Renovation Services in Jasper, Georgia",
-   title="Jasper Contractor | Reliant Consulting and Construction",
-   desc="Jasper, GA contractor: general construction, kitchen and bathroom remodels, and fire, water and storm restoration. Family owned, licensed & insured. Free estimates."),
+   title="General Contractor in Jasper, GA | Reliant Consulting and Construction",
+   desc="Jasper, GA contractor: general construction, kitchen and bathroom remodels, and fire, water and storm restoration. Family owned, licensed & insured."),
  "marietta": dict(county="Cobb County", short="Marietta and Cobb County",
-   tag="Construction services in Marietta",
+   tag="Construction and Remodeling in Marietta, GA",
    sub="Quality construction and renovation solutions for Marietta residents and businesses",
    hero="68f67ba318c4204457427f58",
    intro=["Marietta homeowners deserve contractors they can trust. At Reliant Consulting and Construction, Mark and Dylan bring decades of experience to every project in Marietta and throughout Cobb County.",
@@ -33,10 +34,10 @@ INFO = {
          "Choose Reliant Consulting and Construction for your next Marietta project - where quality craftsmanship meets honest, reliable service. Contact us today for your free estimate."],
    popular=["Kitchen Renovations", "Deck Construction", "Basement Finishing", "Bathroom Remodels", "Home Additions", "Whole Home Renovations", "Roof Repair & Replacement", "Storm Damage Restoration", "Emergency Water Damage"],
    h2="Trusted Contractors Serving Marietta, GA",
-   title="Marietta Contractor | Reliant Consulting and Construction",
+   title="General Contractor in Marietta, GA | Reliant Consulting and Construction",
    desc="Marietta, GA contractor serving Cobb County: construction, kitchen and bathroom remodels, and restoration. Family owned, licensed & insured. Free estimates."),
  "ball-ground": dict(county="Cherokee County", short="Ball Ground and Cherokee County",
-   tag="Services in Ball Ground",
+   tag="Construction and Remodeling in Ball Ground, GA",
    sub="Complete construction and renovation solutions for Ball Ground homeowners",
    hero="68f428101e167416f0edd38d",
    intro=["Ball Ground is a special community, and we're honored to serve homeowners here. Mark and Dylan understand what it takes to maintain and improve homes in Cherokee County - from the unique character of the area to local building requirements.",
@@ -50,10 +51,10 @@ INFO = {
          "Trust Reliant Consulting and Construction for your next Ball Ground project - honest pricing, quality work, and service you can count on. Contact us today for your free estimate."],
    popular=["Custom Home Building", "Deck Construction", "Roofing Services", "Bathroom Remodels", "Home Additions", "Whole Home Renovations", "Storm Damage Repair", "Basement Finishing", "Fire & Water Restoration"],
    h2="Professional Construction Services in Ball Ground, Georgia",
-   title="Ball Ground Contractor | Reliant Consulting and Construction",
+   title="General Contractor in Ball Ground, GA | Reliant Consulting and Construction",
    desc="Ball Ground, GA contractor serving Cherokee County: custom homes, additions, remodels and storm, fire and water restoration. Family owned, licensed & insured."),
  "alpharetta": dict(county="Fulton County", short="Alpharetta and Fulton County",
-   tag="Construction services in Alpharetta",
+   tag="Construction and Remodeling in Alpharetta, GA",
    sub="Quality construction, remodeling and restoration for Alpharetta homeowners",
    hero="68f3b5f3a144cd15d4ea493b",
    intro=["Alpharetta homeowners expect quality, communication and a contractor who shows up. Reliant Consulting and Construction is a father-and-son team, Mark and Dylan, bringing over 30 years of combined experience to homes in Alpharetta and throughout Fulton County.",
@@ -66,10 +67,10 @@ INFO = {
          "Choose Reliant Consulting and Construction for your next Alpharetta project - honest pricing, quality work, and service you can count on. Contact us today for your free estimate."],
    popular=["Kitchen Renovations", "Bathroom Remodels", "Basement Finishing", "Whole Home Renovations", "Home Additions", "Deck Construction", "Roof Repair & Replacement", "Storm Damage Restoration", "Emergency Water Damage"],
    h2="Professional Construction & Renovation Services in Alpharetta, Georgia",
-   title="Alpharetta Contractor | Reliant Consulting and Construction",
-   desc="Alpharetta, GA contractor serving Fulton County: kitchen and bathroom remodels, basements, additions and restoration. Family owned, licensed & insured. Free estimates."),
+   title="General Contractor in Alpharetta, GA | Reliant Consulting and Construction",
+   desc="Alpharetta, GA contractor serving Fulton County: kitchen and bathroom remodels, basements, additions and restoration. Family owned, licensed & insured."),
  "canton": dict(county="Cherokee County", short="Canton and Cherokee County",
-   tag="Construction and remodeling in Canton",
+   tag="Construction and Remodeling in Canton, GA",
    sub="Remodels, additions and restoration for Canton homeowners",
    hero="68fba254409d6af8e1fc3152",
    intro=["Canton is the county seat of Cherokee County and one of the places we work most. Mark and Dylan handle kitchens, bathrooms, basements, decks and additions for Canton homeowners, from older homes near downtown to newer subdivisions off I-575.",
@@ -82,10 +83,10 @@ INFO = {
          "Every estimate is free and in person. Call or send the form and Mark or Dylan will get back to you."],
    popular=["Kitchen Renovations", "Bathroom Remodels", "Basement Finishing", "Deck Construction", "Home Additions", "Whole Home Renovations", "Roof Repair & Replacement", "Storm Damage Restoration", "Emergency Water Damage"],
    h2="Construction & Renovation Services in Canton, Georgia",
-   title="Canton GA Contractor | Reliant Consulting and Construction",
+   title="General Contractor in Canton, GA | Reliant Consulting and Construction",
    desc="Canton, GA contractor serving Cherokee County: kitchen and bathroom remodels, basements, decks, additions and restoration. Family owned, licensed & insured."),
  "woodstock": dict(county="Cherokee County", short="Woodstock and south Cherokee County",
-   tag="Construction and remodeling in Woodstock",
+   tag="Construction and Remodeling in Woodstock, GA",
    sub="Kitchens, bathrooms, basements and outdoor living for Woodstock homes",
    hero="68f3b5e74a04cbe2cc1b1048",
    intro=["Woodstock homeowners call us for remodels that add value: updated kitchens and bathrooms, finished basements, decks, patios and retaining walls. We work across Woodstock, including the Towne Lake area.",
@@ -98,10 +99,10 @@ INFO = {
          "Free in-person estimates, clear pricing and a schedule you can plan around. Contact us to get started."],
    popular=["Kitchen Renovations", "Bathroom Remodels", "Basement Finishing", "Deck Construction", "Patios & Retaining Walls", "Home Additions", "Whole Home Renovations", "Storm Damage Restoration", "Emergency Water Damage"],
    h2="Remodeling & Construction Services in Woodstock, Georgia",
-   title="Woodstock GA Contractor | Reliant Consulting and Construction",
+   title="General Contractor in Woodstock, GA | Reliant Consulting and Construction",
    desc="Woodstock, GA contractor: kitchen and bathroom remodels, basements, decks, patios, additions and restoration. Family owned, licensed & insured. Free estimates."),
  "cumming": dict(county="Forsyth County", short="Cumming and Forsyth County",
-   tag="Construction and remodeling in Cumming",
+   tag="Construction and Remodeling in Cumming, GA",
    sub="Remodels, outdoor living and restoration for Cumming and Forsyth County",
    hero="68fcf6eed672b4c0f9c32cf4",
    intro=["Cumming is the county seat of Forsyth County, and we work there regularly. From lake-area homes near Lake Lanier to newer neighborhoods, Mark and Dylan handle remodels, additions, decks, porches and pavilions.",
@@ -114,10 +115,10 @@ INFO = {
          "Free in-person estimates. Call or send the form to set one up."],
    popular=["Kitchen Renovations", "Bathroom Remodels", "Basement Finishing", "Decks, Porches & Pavilions", "Home Additions", "Whole Home Renovations", "Roof Repair & Replacement", "Storm Damage Restoration", "Emergency Water Damage"],
    h2="Construction & Renovation Services in Cumming, Georgia",
-   title="Cumming GA Contractor | Reliant Consulting and Construction",
+   title="General Contractor in Cumming, GA | Reliant Consulting and Construction",
    desc="Cumming, GA contractor serving Forsyth County: remodels, decks, porches, pavilions, additions and restoration. Family owned, licensed & insured. Free estimates."),
  "milton": dict(county="Fulton County", short="Milton and north Fulton County",
-   tag="Construction and remodeling in Milton",
+   tag="Construction and Remodeling in Milton, GA",
    sub="High-end remodels, additions and restoration for Milton homeowners",
    hero="68fba25445057e121aa79020",
    intro=["Milton homes tend to be larger properties with high expectations for finish quality. We remodel kitchens, bathrooms and living spaces, finish basements and build additions across Milton, including the Crabapple area.",
@@ -130,7 +131,7 @@ INFO = {
          "Free in-person estimates. Contact us to talk through your project."],
    popular=["Kitchen Renovations", "Bathroom Remodels", "Basement Finishing", "Living Space Renovations", "Home Additions", "Whole Home Renovations", "Deck Construction", "Storm Damage Restoration", "Emergency Water Damage"],
    h2="Remodeling & Construction Services in Milton, Georgia",
-   title="Milton GA Contractor | Reliant Consulting and Construction",
+   title="General Contractor in Milton, GA | Reliant Consulting and Construction",
    desc="Milton, GA contractor serving north Fulton County: kitchen and bathroom remodels, basements, additions and restoration. Family owned, licensed & insured."),
 }
 
@@ -139,10 +140,10 @@ def build(page, hero, pic, cta_band, form, faq_html, faq_ld, SERVICES):
         for s, d in zip(SERVICES, [f"Complete construction services in {t}, GA", f"Transform your {t} home", "Emergency damage restoration"]))
     # hub
     cards = "".join(f'<a class="feat" style="text-decoration:none" href="/service-areas/{s}/"><h3>{n}, GA</h3><p>{INFO[s]["county"]}. Construction, remodeling and restoration.</p></a>' for s, n, _ in TOWNS)
-    body = hero("Service Areas", "Serving Jasper, Alpharetta, Canton, Woodstock, Cumming, Milton, Ball Ground, Marietta and surrounding North Georgia communities.", '<div class="crumbs"><a href="/">Home</a> / Service Areas</div>') + f'''<section><div class="wrap"><div class="grid g4">{cards}</div>
+    body = hero("Service Areas Across North Georgia", "Serving Jasper, Alpharetta, Canton, Woodstock, Cumming, Milton, Ball Ground, Marietta and surrounding North Georgia communities.", '<div class="crumbs"><a href="/">Home</a> / Service Areas</div>') + f'''<section><div class="wrap"><div class="grid g4">{cards}</div>
 <p class="lead" style="margin-top:28px">We also serve Roswell and other nearby towns. Not sure we cover you? Call <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a>.</p></div></section>''' + cta_band()
     page("/service-areas/", "Service Areas in North Georgia | Reliant Consulting and Construction",
-         "Reliant Consulting and Construction builds, remodels and restores homes across North Georgia: Jasper, Alpharetta, Canton, Woodstock, Cumming, Milton and more.", body, cur="areas")
+         "Reliant Consulting and Construction builds, remodels and restores homes across North Georgia: Jasper, Alpharetta, Canton, Woodstock, Cumming, Milton and more.", body, cur="areas", crumb="Service Areas")
     for slug, town, county in TOWNS:
         d = INFO[slug]
         crumbs = f'<div class="crumbs"><a href="/">Home</a> / <a href="/service-areas/">Service Areas</a> / {town}</div>'
@@ -156,10 +157,10 @@ def build(page, hero, pic, cta_band, form, faq_html, faq_ld, SERVICES):
 <section><div class="wrap split"><div><h2>Your local {town} contractors</h2>{"".join(f"<p>{p}</p>" for p in d["intro"])}
 <div class="cta-row"><a class="btn" href="/contact/">Schedule Consultation</a><a class="btn dark" href="tel:{PHONE_TEL}">Call Today</a></div></div>{pic(d["hero"], f"Reliant Consulting and Construction project near {town}, GA", eager=True)}</div></section>
 <section class="alt"><div class="wrap"><div class="center"><h2>Services in {town}</h2></div><div class="grid g3" style="margin-top:24px">{svc_cards(town)}</div></div></section>
-<section><div class="wrap"><div class="center"><h2>Popular Services in {town}</h2><p class="lead">What {town} residents choose us for</p></div><ul class="ticks list" style="margin-top:22px">{"".join(f"<li>{x}</li>" for x in d["popular"])}</ul></div></section>
+<section><div class="wrap"><div class="center"><h2>Popular Services in {town}</h2><p class="lead">What {town} residents choose us for</p></div><ul class="ticks list" style="margin-top:22px">{"".join(f"<li>{services.linkify(x)}</li>" for x in d["popular"])}</ul></div></section>
 {story}
 <section class="{"" if d["story"] else "alt"}"><div class="wrap" style="max-width:860px"><h2>{d["h2"]}</h2>{"".join(f"<p>{p}</p>" for p in d["long"])}</div></section>
 <section><div class="wrap" style="max-width:860px"><h2>{town} FAQs</h2>{faq_html(faqs)}</div></section>
 <section class="cta-band"><div class="wrap"><h2>Start Your {town} Project Today</h2><p>Get your free, no-obligation estimate from {town}'s trusted contractors</p><div class="cta-row" style="justify-content:center"><a class="btn" href="/contact/">Request Free Estimate</a><a class="btn ghost" href="tel:{PHONE_TEL}">Call {PHONE_DISPLAY}</a></div></div></section>'''
         ld = [faq_ld(faqs), {"@context": "https://schema.org", "@type": "Service", "serviceType": "General contractor, remodeling and restoration", "provider": {"@id": DOMAIN + "/#business"}, "areaServed": {"@type": "City", "name": f"{town}, GA"}}]
-        page(f"/service-areas/{slug}/", d["title"], d["desc"], body, cur=slug, og_img=d["hero"], extra_ld=ld)
+        page(f"/service-areas/{slug}/", d["title"], d["desc"], body, cur=slug, og_img=d["hero"], extra_ld=ld, crumb=town)

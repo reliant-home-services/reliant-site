@@ -65,7 +65,7 @@ def footer():
     twn = "".join(f'<li><a href="/service-areas/{t[0]}/">{t[1]}, GA</a></li>' for t in TOWNS)
     return f'''<footer><div class="wrap">
 <div class="grid g4">
-<div><h3>{NAME}</h3><p>Family owned and operated construction company serving North Georgia with honesty, reliability, and quality craftsmanship.</p><p>License Number {LICENSE}<br><a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a><br>{HOURS_TEXT}</p></div>
+<div><h3>{NAME}</h3><p>Family owned and operated construction company serving North Georgia with honesty, reliability, and quality craftsmanship.</p><p>Based in Jasper, Pickens County, Georgia<br>License Number {LICENSE}<br><a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a><br>{HOURS_TEXT}</p></div>
 <div><h3>Services</h3><ul>{svc}</ul></div>
 <div><h3>Service Areas</h3><ul>{twn}</ul></div>
 <div><h3>Quick Links</h3><ul><li><a href="/">Home</a></li><li><a href="/about/">About Us</a></li><li><a href="/services/">All Services</a></li><li><a href="/projects/">Projects</a></li><li><a href="/reviews/">Reviews</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/contact/">Contact Us</a></li></ul></div>
@@ -109,7 +109,19 @@ def jsonld(extra=None):
     return "".join('<script type="application/ld+json">' + json.dumps(x, ensure_ascii=False) + "</script>" for x in out)
 
 PAGES = []
-def page(path, title, desc, body, cur="", og_img="68f3b5f3a144cd15d4ea493b", extra_ld=None, preload=None):
+def crumb_ld(path, crumb):
+    """BreadcrumbList for Google: Home > section > page."""
+    HUBS = {"services": "Services", "service-areas": "Service Areas"}
+    parts = [p for p in path.strip("/").split("/") if p]
+    items = [("Home", DOMAIN + "/")]
+    if len(parts) == 2 and parts[0] in HUBS: items.append((HUBS[parts[0]], f"{DOMAIN}/{parts[0]}/"))
+    items.append((crumb, DOMAIN + path))
+    return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": n, "item": u} for i, (n, u) in enumerate(items)]}
+
+def page(path, title, desc, body, cur="", og_img="68f3b5f3a144cd15d4ea493b", extra_ld=None, preload=None, crumb=None, svc=None):
+    extra_ld = list(extra_ld or [])
+    if crumb: extra_ld.append(crumb_ld(path, crumb))
+    if svc: extra_ld.append({"@context": "https://schema.org", "@type": "Service", "name": crumb or svc, "serviceType": svc, "url": DOMAIN + path, "provider": {"@id": DOMAIN + "/#business"}, "areaServed": [{"@type": "City", "name": t[1] + ", GA"} for t in TOWNS]})
     canon = DOMAIN + path
     pl = f'<link rel="preload" as="image" href="{preload}" fetchpriority="high">' if preload else ""
     h = f'''<!doctype html><html lang="en"><head><meta charset="utf-8">
